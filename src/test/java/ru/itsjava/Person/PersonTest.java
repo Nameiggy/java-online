@@ -11,7 +11,7 @@ public class PersonTest {
 
     public static final int DEFUALT_AGE = 20;
     public static final String NEW_PERSON = "Mihail";
-    public static final int NEW_AGE = 16;
+
     private static final String DEFUALT_NAME = "Igor ";
 
     @DisplayName("корректно создаваться конструктором")
