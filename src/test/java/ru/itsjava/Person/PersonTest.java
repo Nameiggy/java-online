@@ -7,8 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PersonTest {
     public static final String DEFAULT_NAME = "Иван";
     public static final int DEFAULT_AGE = 30;
-    public static final String NEW_NAME = "MAXIM";
-    public static final int NEW_AGE = 17;
+
     @DisplayName("Корректно создаваться конструктором ")
     @Test
     public void shouldCreateConstructor() {
