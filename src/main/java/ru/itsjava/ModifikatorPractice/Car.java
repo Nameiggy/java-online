@@ -11,7 +11,7 @@ public class Car {
 
     private String brand;
     private String color;
-    private static double price = 40000;
+    private static double price = 60000;
 
 
 
