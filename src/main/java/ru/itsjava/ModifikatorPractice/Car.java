@@ -3,10 +3,11 @@ package ru.itsjava.ModifikatorPractice;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
-@Data
 @RequiredArgsConstructor
+@Data
 public class Car {
 
     private String brand;
@@ -15,10 +16,9 @@ public class Car {
 
 
 
-    public static void setPrice(double price1){
-        price=price1;
+    public static void setPrice (double price1){
+        price = price1;
     }
-
 
 
     public double getPrice () {

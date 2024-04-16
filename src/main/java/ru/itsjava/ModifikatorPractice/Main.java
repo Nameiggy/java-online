@@ -11,7 +11,7 @@ public class Main {
         System.out.println("moskvich.getPrice() = " + moskvich.getPrice());
 
 
-        Car.setPrice(4_000);
+        Car.setPrice(5_000);
 
         System.out.println("bantli.getPrice() = " + bantli.getPrice());
         System.out.println("moskvich.getPrice() = " + moskvich.getPrice());
