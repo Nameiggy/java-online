@@ -11,11 +11,11 @@ public class Car {
 
     private String brand;
     private String color;
-    private static double price = 60000;
+    private static double price = 60_000;
 
 
 
-    public void setPrice (double price1){
+    public static void setPrice(double price1){
         price=price1;
     }
 
