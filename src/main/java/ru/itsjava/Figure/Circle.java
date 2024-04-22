@@ -1,6 +1,7 @@
 package ru.itsjava.Figure;
 
 
+
 public class Circle extends Figure{
 
 
@@ -8,10 +9,6 @@ public class Circle extends Figure{
     public final static double PI = 3.14;
     public int radius;
 
-    public Circle( int radius){
-        this.name= "какое-то дефолтное имя";
-        this.radius = radius;
-    }
 
 
     public Circle(String name, int radius){
