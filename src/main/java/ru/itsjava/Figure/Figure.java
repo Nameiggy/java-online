@@ -1,6 +1,7 @@
 package ru.itsjava.Figure;
 
 public abstract class Figure {
+    public final static double PI = 3.14;
 
     public  void getTriangeleArea(){
         System.out.println("вычесление площади треугольника");
