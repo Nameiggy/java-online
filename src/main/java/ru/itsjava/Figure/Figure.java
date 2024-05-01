@@ -26,7 +26,7 @@ public abstract class Figure {
         System.out.println("Вычесление периметра круга");
     }
     public void getCircleArea () {
-        System.out.println("Вычесление области круга");
+        System.out.println("Вычесление области его круга");
     }
 
 }
