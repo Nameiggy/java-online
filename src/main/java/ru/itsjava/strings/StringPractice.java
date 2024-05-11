@@ -32,7 +32,7 @@ public class StringPractice {
         //игнорирует регистр и сравнивает строки
         String[] strs = str.split( " ");
         System.out.println(strs[0]);
-        System.out.println("strs[1] = " + strs[1]);
+        System.out.println("strs[1] = " +  strs[1]);
         //  метод для получения массива строк
          
 
