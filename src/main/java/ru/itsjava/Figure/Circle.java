@@ -2,10 +2,11 @@ package ru.itsjava.Figure;
 
 
 
-public class Circle extends Figure{
+public  class Circle extends Figure{
 
     public final String name;
     public int radius;
+
 
 
 

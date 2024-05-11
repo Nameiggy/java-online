@@ -29,4 +29,5 @@ public abstract class Figure {
         System.out.println("Вычесление области его круга");
     }
 
+
 }
