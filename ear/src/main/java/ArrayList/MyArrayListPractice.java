@@ -80,6 +80,9 @@ public class MyArrayListPractice {
         System.out.println("Index of 'Second': " + list.indexOf("Second")); // Ожидается: 1
         System.out.println("Index of 'First': " + list.indexOf("First")); // Ожидается: 0
         System.out.println("Index of 'NonExistent': " + list.indexOf("NonExistent")); // Ожидается: -1
+        //Тестирование lastIndexOf(Object o)
+        System.out.println("list.lastIndexOf(\"Privet\") = " + list.lastIndexOf("Privet"));//Ожидается: -1
+        System.out.println("list.lastIndexOf(\"Second\") = " + list.lastIndexOf("Second"));//Ожидается: 1
     }
 }
 

@@ -1,97 +1,99 @@
 package ArrayList;
 
+import java.awt.*;
 import java.util.Arrays;
+import java.util.Objects;
 
-public class MyArrayList  {
+import static java.util.Objects.checkIndex;
+
+
+public class MyArrayList {
 
     public static final int DEFAULT_CAPACITY = 10;
     private int realSize;
     private Object[] array;
-    
 
 
     public MyArrayList() {
-        array= new Object[DEFAULT_CAPACITY];
+        array = new Object[DEFAULT_CAPACITY];
         realSize = 0;
 
     }
-
 
     public int size() {
         return realSize;
     }
 
     public boolean isEmpty() {
-
         return realSize == 0;
     }
 
     public boolean contains(Object o) {
-        for (int i = 0; i <realSize ; i++) {
-            if (array[i].equals(o)){
+        for (int i = 0; i < realSize; i++) {
+            if (array[i].equals(o)) {
+                return true;
 
             }
-
-
         }
         return false;
     }
 
     public boolean add(Object o) {
-        if (realSize == array.length){
-
-            Object[] resArray = new Object[array.length * 3/2 +1];
+        if (realSize == array.length) {
+            Object[] resArray = new Object[array.length * 3 / 2 + 1];
             System.arraycopy(array, 0, resArray, 0, array.length);
-            array= resArray;
-
-
+            array = resArray;
         }
-        array[realSize++]=o;
-
-
-
-
+        array[realSize++] = o;
         return true;
     }
 
     public boolean remove(Object o) {
-        for (int i = 0; i < realSize; i++) {
-            if (array[i].equals(o)) {
-                System.arraycopy(array, i + 1, array, i, realSize - i - 1);
-                array[--realSize] = null; // Удаляем ссылку
-                return true;
+
+        int delIndex = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].equals(o)) {
+                delIndex = i;
+                break;
             }
         }
-        return false;
+        if (array.length - 1 - delIndex >= 0) {
+            System.arraycopy(array, delIndex + 1, array, delIndex, array.length - 1 - delIndex);
+        }
+        if (delIndex == -1) {
+            return false;
+        } else {
+            realSize--;
+            return true;
+        }
     }
 
     public void clear() {
-        Arrays.fill(array, null);// Заполняем массив null
-        realSize =0 ; //Сбрасываем размер
-        System.out.println(realSize );
+        realSize = 0;
 
     }
 
-    public Object get(int index) {
+    private void validateIndex(int index, int realSize) {
         if (index < 0 || index >= realSize) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + realSize);
         }
+    }
+
+
+    public Object get(int index) {
+        validateIndex(index, realSize);
         return array[index];
     }
 
     public Object set(int index, Object element) {
-        if (index < 0 || index >= realSize) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + realSize);
-        }
+        validateIndex(index, realSize);
         Object oldValue = array[index];
         array[index] = element;
         return oldValue;
     }
 
     public void add(int index, Object element) {
-        if (index < 0 || index > realSize) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + realSize);
-        }
+        validateIndex(index, realSize);
         if (realSize == array.length) {
             Object[] resArray = new Object[array.length * 3 / 2 + 1];
             System.arraycopy(array, 0, resArray, 0, index);
@@ -105,14 +107,29 @@ public class MyArrayList  {
     }
 
     public Object remove(int index) {
-        if (index < 0 || index >= realSize) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + realSize);
+        checkIndex(index);
+        Object resElement = array[index];
+        if (array.length - 1 - index >= 0) {
+            System.arraycopy(array, index + 1, array, index, array.length - 1 - index);
         }
-        Object removedElement = array[index];
-        System.arraycopy(array, index + 1, array, index, realSize - index - 1);
-        array[--realSize] = null; // Удаляем ссылку
-        return removedElement;
+        realSize--;
+        return resElement;
+
     }
+
+    private void checkIndex(int index) {
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+        }
+    }
+
+    private boolean isCorrectIndex(int index) {
+        if ((index > -1) || (index < realSize)) {
+            return true;
+        }
+        return false;
+    }
+
 
     public int indexOf(Object o) {
         for (int i = 0; i < realSize; i++) {
@@ -122,21 +139,32 @@ public class MyArrayList  {
         }
         return -1; // Если элемент не найден
     }
- @Override
+
+    public int lastIndexOf(Object o) {
+        for (int i = realSize - 1; i >= 0; i--) {
+            if (get(i) == null ? o == null : get(i).equals(o)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
     public String toString() {
-        
+
 //        return "MyArrayList{" +
 //                "realSize" + realSize +
 //                ", array=" + Arrays.toString(array) +
 //                "}";
-     StringBuilder stringBuilder = new StringBuilder("MyArrayList");
-     for (int i = 0; i <realSize ; i++) {
-         stringBuilder.append(array[i]).append(" ");
-     }
-     stringBuilder.append("}");
-     return stringBuilder.toString();
+        StringBuilder stringBuilder = new StringBuilder("MyArrayList");
+        for (int i = 0; i < realSize; i++) {
+            stringBuilder.append(array[i]).append(" ");
+        }
+        stringBuilder.append("}");
+        return stringBuilder.toString();
 
 
     }
+
 
 }
