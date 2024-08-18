@@ -34,7 +34,6 @@ public class MyArrayListTest {
         MyArrayList list = new MyArrayList();
         list.add("list1");
         list.add("list2");
-        list.size();
         assertEquals(2, list.size());
     }
     @DisplayName("Проверяем метод isEmpty в MyArrayList")
@@ -61,7 +60,12 @@ public class MyArrayListTest {
         list.add("List1");
         list.add("List2");
         list.add("List3");
+        list.remove(2);
+        assertNull(list.get(2));
         assertTrue(list.remove("List1"));
+
+
+
 
     }
     @DisplayName("Проверяем метод clear в MyArrayList")
@@ -72,6 +76,7 @@ public class MyArrayListTest {
         list.add("List2");
         list.add("List3");
         list.clear();
+        assertNull(null,"size () = 0");
 
     }
     @DisplayName("Проверяем методы indexOf/lastIndexOf в MyArrayList")

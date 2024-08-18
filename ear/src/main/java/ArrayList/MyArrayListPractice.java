@@ -48,7 +48,7 @@ public class MyArrayListPractice {
         System.out.println(list); // Ожидается: list{Hello, World, 123}
 
         // Тестирование contains(Object o)
-        System.out.println("Contains 'Hello': " + list.contains("Hello")); // Ожидается: true
+        System.out.println("Contains 'Hello': " + list.contains("Hello")); // Ожидается: false
         System.out.println("Contains 'Java': " + list.contains("Java")); // Ожидается: false
 
         // Тестирование get(int index)

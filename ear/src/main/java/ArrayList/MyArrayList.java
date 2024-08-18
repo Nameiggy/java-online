@@ -73,6 +73,7 @@ public class MyArrayList {
             array[i] = null;
         }
         realSize = 0;
+        System.out.println("size() = " + size());
 
     }
 
@@ -84,15 +85,21 @@ public class MyArrayList {
 
 
     public Object get(int index) {
-        validateIndex(index, realSize);
+        for (int i = 0; i < index; i++) {
+            if (index < 0 || index > size()){
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        }
         return array[index];
     }
 
     public Object set(int index, Object element) {
-        validateIndex(index, realSize);
-        Object oldValue = array[index];
-        array[index] = element;
-        return oldValue;
+        if (index < size() && index >= 0){
+            Object o = array[index];
+            array[index] = element;
+            return o;
+        }
+        return null;
     }
 
     public void add(int index, Object element) {
@@ -144,12 +151,13 @@ public class MyArrayList {
     }
 
     public int lastIndexOf(Object o) {
-        for (int i = realSize - 1; i >= 0; i--) {
-            if (get(i) == null ? o == null : get(i).equals(o)) {
-                return i;
+        int lastIndex = -1;
+        for (int i = 0; i < size(); i++) {
+            if (o.equals(array[i])){
+                lastIndex = i;
             }
         }
-        return -1;
+        return lastIndex;
     }
 
     @Override
