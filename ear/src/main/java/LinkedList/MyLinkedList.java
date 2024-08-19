@@ -61,28 +61,29 @@ public class MyLinkedList {
 
     public boolean remove(Object o) {
         if (head == null){
-            return false;
+            return false;//если пустой список, возвращать ничего не надо
+
         }
-        if (head.getValue().equals(o)){
+        if (head.getValue().equals(o)){//если совпал элемент в head, переместить указатель на след элемент
             head= head.getNext();
             return true;
         }
-        if (head.getNext() == null) {
+        if (head.getNext() == null) {//Проверяем есть ли дальше объект за head
             return false;
         }
         Node curNode = head;
         Node ruNode = head;
-        while ((curNode= curNode.getNext())!= null){
-            if (curNode.getValue().equals(o)){
+        while ((curNode= curNode.getNext())!= null){ //проверяем в curNode есть элемент или нет
+            if (curNode.getValue().equals(o)){// есди нет перемещаем curNode и prevNode дальше
                 break;
             }
             ruNode=ruNode.getNext();
         }
-        if (curNode== null){
+        if (curNode== null){// проверка curNode на null
             return false;
         }
-        ruNode.setNext(curNode.getNext());
-        curNode.setNext(null);
+        ruNode.setNext(curNode.getNext()); //если нашли эл-т, ruNode setNext
+        curNode.setNext(null);//убираем ссылку
         return true;
 
     }
@@ -130,23 +131,25 @@ public class MyLinkedList {
 
 
     }
-
+    //СТРОКА1 -> null
+    //СТРОКА1 -> СТРОКА2 -> СТРОКА3-> null
     public Object remove(int index) {
-        checkIndex (index);
-        if (index==0) {
+        checkIndex (index);// проверяем корректный индекс или нет. Если он корректный, значит 1 элемент есть (это head)
+        if (index==0) {// если индекс = 0, удаляем head
             Object resValue = head.getValue();
-            if (head.getNext()== null){
+            if (head.getNext()== null){// если есть только head, присваиваем null
                 head=null;
             }else {
-                head=head.getNext();
+                head=head.getNext();// если нет, то передвиганм ссылку head на след элемент и рассматриваем только ее
             }
             return resValue;
         }
+        // если мы не вернули ничего, значит есть минимум 2 элемента
         Node curNode = head;//элемент который хотим удалить
-        Node rubNode = head;//элемент который хотим удалить
+        Node rubNode = head;//предыдущий элемент
         int count = 0;
         while ((curNode=curNode.getNext())!=null) {
-            count++;
+            count++;//пробегаемся по листу
             if (count==index) { //проверка на выход
                 break;
             }
@@ -157,9 +160,10 @@ public class MyLinkedList {
 
         if (curNode.getNext()==null){ // если хотим удалить элемент с конца (строка3)
             rubNode.setNext(null); // предыдущему эл-ту (строка2) присваиваем null
-        }else {
-            rubNode.setNext(curNode.getNext());
-            curNode.setNext(null);
+        }else { // если это не последний ->
+            rubNode.setNext(curNode.getNext());// если хотим удалить посередине, нужно перекинуть ссылку и (строка2) присвоить null
+            // rubNode(строка1).setnext (ссылка) curNode.getNext (строка3)
+            curNode.setNext(null);// у текущего элемента делем ссылку null
         }
         return resValue;
     }
