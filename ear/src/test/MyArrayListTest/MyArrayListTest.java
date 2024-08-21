@@ -63,6 +63,7 @@ public class MyArrayListTest {
         list.remove(2);
         assertNull(list.get(2));
         assertTrue(list.remove("List1"));
+        assertTrue(list.contains("List2"));
 
 
 
@@ -85,9 +86,12 @@ public class MyArrayListTest {
         MyArrayList list = new MyArrayList();
         list.add("List1");
         list.add("List2");
+        list.add("List2");
+        list.add("List3");
         list.add("List3");
         assertEquals(0,list.indexOf("List1"));
         assertEquals(1,list.lastIndexOf("List2"));
+
     }
 
 

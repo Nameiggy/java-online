@@ -31,6 +31,7 @@ public class MyArrayList {
     public boolean contains(Object o) {
         for (int i = 0; i < realSize; i++) {
             if (array[i].equals(o)) {
+                return true;
 
 
             }
@@ -142,7 +143,7 @@ public class MyArrayList {
 
 
     public int indexOf(Object o) {
-        for (int i = 0; i < realSize; i++) {
+        for (int i = 0; i < size(); i++) {
             if (array[i].equals(o)) {
                 return i;
             }

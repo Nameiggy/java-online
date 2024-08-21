@@ -89,7 +89,13 @@ public class MyLinkedList {
     }
 
     public void clear() {
-        head = null;
+        while (head!=null){
+            Node temp = head;// Сохраняем текущий узел
+            head= head.next;// Обновляем head на следующий узел
+            temp.next= null;// Разрываем связь с следующим узлом
+        }
+        head=null; // В конце обнуляем head
+
 
     }
 
