@@ -77,7 +77,7 @@ public class MyArrayListTest {
         list.add("List2");
         list.add("List3");
         list.clear();
-        assertNull(null,"size () = 0");
+        assertTrue(list.isEmpty());
 
     }
     @DisplayName("Проверяем методы indexOf/lastIndexOf в MyArrayList")
@@ -90,7 +90,7 @@ public class MyArrayListTest {
         list.add("List3");
         list.add("List3");
         assertEquals(0,list.indexOf("List1"));
-        assertEquals(1,list.lastIndexOf("List2"));
+        assertEquals(2,list.lastIndexOf("List2"));
 
     }
 
