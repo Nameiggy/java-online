@@ -10,7 +10,7 @@ public class MyLinkedListTest {
 
 
 
-    @DisplayName("Проверяем методы get/add в MyArrayList")
+    @DisplayName("Проверяем методы get/add в MyLinkedList")
     @Test
     public void checksIfTheAdditionIsCorrect (){
         MyLinkedList list = new MyLinkedList();
@@ -66,7 +66,7 @@ public class MyLinkedListTest {
         assertTrue(list.remove("Piter"));
         assertTrue(list.contains("Piter1"));
     }
-    @DisplayName("Проверяем метод clear в MylINKEDList")
+    @DisplayName("Проверяем метод clear в MylinkedList")
     @Test
     public void shouldHaveCorrectClearMethod () {
         MyLinkedList list = new MyLinkedList();
