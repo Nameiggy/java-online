@@ -18,7 +18,7 @@ public class MyLinkedListTest {
         list.add("Mort");
         assertEquals("Hello",list.get(0));
     }
-    @DisplayName("Проверяем метод set в MyLinkedList")
+    @DisplayName("Проверяем  метод set в MyLinkedList")
     @Test
     public void shouldHaveCorrectSetMethod (){
         MyLinkedList list = new MyLinkedList();
