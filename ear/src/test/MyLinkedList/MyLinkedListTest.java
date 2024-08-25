@@ -78,7 +78,7 @@ public class MyLinkedListTest {
     }
     @DisplayName("Проверяем методы indexOf/lastIndexOf в MyLinkedList")
     @Test
-    public void shouldHaveCorrectIndexOfMethod () {
+    public void returnsFirstAppropriateIndexOfMethod () {
         MyLinkedList list = new MyLinkedList();
         list.add("Joni1");
         list.add("Joni2");
