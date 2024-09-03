@@ -87,7 +87,7 @@ public class MyLinkedListTest {
         list.add("Joni3");
 
         assertEquals(0,list.indexOf("Joni1"));
-        assertEquals(1,list.lastIndexOf("Joni2"));
+        assertEquals(2,list.lastIndexOf("Joni2"));
 
     }
 }

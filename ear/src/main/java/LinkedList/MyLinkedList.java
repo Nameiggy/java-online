@@ -206,11 +206,13 @@ public class MyLinkedList {
             return -1;
         }
         Node curNode = head;
-        int i =-1, index = -1;
+        int i =-1;
+        int index = -1;
+
         while (curNode!=null){
             i++;
             if (curNode.getValue().equals(o)){
-                return i;
+                index = i;
             }
             curNode=curNode.getNext();
         }
