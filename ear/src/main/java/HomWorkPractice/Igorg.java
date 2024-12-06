@@ -6,8 +6,8 @@ import java.util.*;
 
 public class Igorg {
     public static void main(String[] args) {
-        String inputFilePath = "C:\\Users\\user\\Desktop\\Домашнее задание\\text.txt"; // Путь к входному файлу
-        String outputFilePath = "C:\\Users\\user\\Desktop\\Домашнее задание\\text.txt"; // Путь к выходному файлу
+        String inputFilePath = "ear/src/main/resources/text.txt"; // Путь к входному файлу
+        String outputFilePath = "ear/src/main/resources/text2.txt"; // Путь к выходному файлу
 
         try {
             List<String> lines = Files.readAllLines(Paths.get(inputFilePath));
