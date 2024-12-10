@@ -5,49 +5,48 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        CandyBox box = new CandyBox();
-        box.addSweet(new Chocolate("Шоколадка", 200, 50));
-        box.addSweet(new Candy("Леденец", 100, 20));
-        box.addSweet(new Chocolate("Молочный шоколад", 150, 40));
+        BoxOfSweets marmalade = new Marmalade("Fruit Jelly", 150, 120);
+        BoxOfSweets candy = new Candy("Mint Candy", 50, 70);
+        BoxOfSweets chocolate = new Chocolate("Dark Chocolate", 200, 250);
 
-        System.out.println("Общий вес подарка: " + box.totalWeight());
-        System.out.println("Общая стоимость подарка: " + box.totalPrice());
-        box.displaySweetsInfo();
+        // create sweet-box
+        CandyBox  sweetBox = new CandyBox ();
+
+        // add sweets
+        sweetBox.addSweet(marmalade);
+        sweetBox.addSweet(candy);
+        sweetBox.addSweet(chocolate);
+
+        // info after optimization
+        System.out.println("Перед оптимизацией:");
+        sweetBox.showAllSweets();
+        System.out.println("Общий вес: " + sweetBox.getTotalWeight() + "g");
+        System.out.println("Общая стоимость: " + sweetBox.getTotalPrice() + "rub");
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите оптимизацию: 1 - по весу, 2 - по цене");
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-            System.out.println("Введите  вес:");
-            double reduceWeight = scanner.nextDouble();
-            double newWeight = box.totalWeight() - reduceWeight;
-            System.out.println("Вес после уменьшения: " + newWeight);
-            box.displaySweetsInfo();
-        }else if (choice == 2) {
-            System.out.println("Введите  цену:");
+            // Оптимизация по весу
+            System.out.println("Введите максимальный вес для оптимизации:");
+            double maxWeight = scanner.nextDouble();
+            System.out.println("\nПеред оптимизацией оптимизируйте вес до макс " + maxWeight + "g:");
+            sweetBox.optimizeWeight(maxWeight);
+            sweetBox.showAllSweets();
+            System.out.println("Общий вес после оптимизации веса: " + sweetBox.getTotalWeight() + "g");
+        } else if (choice == 2) {
+            // Оптимизация по цене
+            System.out.println("Введите максимальную цену для оптимизации:");
             double maxPrice = scanner.nextDouble();
-            System.out.println("Сладости под ценой " + maxPrice + ":");
-            BoxOfSweets selectedSweet = null;
-
-            for (BoxOfSweets sweet : box.getSweetsUnderPrice(maxPrice)) {
-                System.out.println("Название: " + sweet.getName() + ", Вес: " + sweet.getWeight() + ", Цена: " + sweet.getPrice() + ", Уникальный параметр: " + sweet.uniqueParameter());
-                // Предложить пользователю выбрать сладость
-                System.out.println("Выберите сладость для уменьшения веса (введите название):");
-                String userInput = scanner.next();
-                if (userInput.equals(sweet.getName())) {
-                    selectedSweet = sweet;
-                }
-            }
-            if (selectedSweet != null) {
-                // Уменьшаем общий вес на вес выбранного объекта
-                double newWeight = box.totalWeight() - selectedSweet.getWeight();
-                System.out.println("Вес после уменьшения: " + newWeight);
-            } else {
-                System.out.println("Сладость не выбрана.");
-            }
+            System.out.println("\nОптимизация цены для max " + maxPrice + " rub:");
+            sweetBox.optimizePrice(maxPrice);
+            sweetBox.showAllSweets();
+            System.out.println("Общая цена после оптимизации цен: " + sweetBox.getTotalPrice() + "rub");
         } else {
-               System.out.println("Неверный выбор.");
+            System.out.println("Неверный выбор.");
         }
+
+        scanner.close();
     }
 }
