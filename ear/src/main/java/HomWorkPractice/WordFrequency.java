@@ -6,6 +6,9 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class WordFrequency {
+
+    // Задача № 1
+
     public static void main(String[] args) {
         String fileName = "ear/src/main/resources/words.txt";
         try {
@@ -51,7 +54,7 @@ public class WordFrequency {
                 maxWords.add(entry.getKey());
             }
         }
-        System.out.println("Слово(а) с максимальной частотой: " + maxWords + " | Частота: " + maxFrequency);
+        System.out.println("Слово с максимальной частотой: " + maxWords + " | Частота: " + maxFrequency);
     }
 }
 

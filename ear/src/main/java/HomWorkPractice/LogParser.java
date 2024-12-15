@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 
 public class LogParser {
 
+    // Задача № 2
+
     public static void main(String[] args) {
         String fileName = "ear/src/main/resources/production_log.csv";
         Map<String, Map<String, Integer>> apiUsage = new HashMap<>();
