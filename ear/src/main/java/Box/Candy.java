@@ -10,4 +10,3 @@ class Candy extends BoxOfSweets  {
         return "Candy: " + name + ", " + weight + "g., " + price + "rub.";
     }
 }
-

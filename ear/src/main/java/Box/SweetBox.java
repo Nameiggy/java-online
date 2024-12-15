@@ -9,4 +9,5 @@ interface SweetBox {
     double getTotalWeight();
     double getTotalPrice();
     void showAllSweets();
+
 }

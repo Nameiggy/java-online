@@ -21,12 +21,15 @@ public class WordFrequency {
         }
     }
 
+    // Считывание содержимого файла и разбиение текста на слова
     private static List<String> readWordsFromFile(String fileName) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(fileName)));
-        String[] words = content.split("[\\W_]+"); // Разделение по пробелам и знакам препинания
+        // Разделяем текст на слова, игнорируя пробелы, знаки препинания и цифры
+        String[] words = content.split("[^a-zA-Zа-яА-Я]+"); // Только буквы (латиница и кириллица)
         return Arrays.asList(words);
     }
 
+    // Подсчет частоты вхождения слов
     private static Map<String, Integer> countWordFrequency(List<String> words) {
         Map<String, Integer> wordCount = new HashMap<>();
         for (String word : words) {
@@ -38,23 +41,38 @@ public class WordFrequency {
         return wordCount;
     }
 
+    // Вывод статистики: слово, частота, процент
     private static void printWordStatistics(Map<String, Integer> wordCount) {
+        // Подсчет общего числа слов
+        int totalWords = wordCount.values().stream().mapToInt(Integer::intValue).sum();
+
+        // Сортировка слов в алфавитном порядке
         List<String> sortedWords = new ArrayList<>(wordCount.keySet());
         Collections.sort(sortedWords);
+
+        System.out.println("Слово | Частота | Процент вхождения");
+        System.out.println("-----------------------------------");
         for (String word : sortedWords) {
-            System.out.println(word + ": " + wordCount.get(word));
+            int count = wordCount.get(word);
+            double percentage = (count * 100.0) / totalWords; // Расчет процента
+            System.out.printf("%-10s | %-8d | %.2f%%%n", word, count, percentage);
         }
     }
 
+    // Нахождение слов с максимальной частотой и их вывод
     private static void findMaxFrequencyWords(Map<String, Integer> wordCount) {
         int maxFrequency = Collections.max(wordCount.values());
         List<String> maxWords = new ArrayList<>();
+
         for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
             if (entry.getValue() == maxFrequency) {
                 maxWords.add(entry.getKey());
             }
         }
-        System.out.println("Слово с максимальной частотой: " + maxWords + " | Частота: " + maxFrequency);
+
+        System.out.println("\nСлово с максимальной частотой:");
+        for (String word : maxWords) {
+            System.out.println(word + ": " + maxFrequency);
+        }
     }
 }
-
