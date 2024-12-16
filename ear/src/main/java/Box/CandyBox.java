@@ -64,13 +64,18 @@ class CandyBox implements SweetBox {
     }
 
     // Метод для оптимизации коробки по цене
-    public void optimizePrice(double maxPrice) {
-        // Удаляем сладости с наименьшим весом и наименьшей ценой
-        while (getTotalPrice() > maxPrice && !sweets.isEmpty()) {
-            // Сортируем по цене, затем по весу
-            sweets.sort(Comparator.comparingDouble(BoxOfSweets::getPrice).thenComparingDouble(BoxOfSweets::getWeight));
-            // Удаляем первую сладость из списка (самую дешёвую и лёгкую)
-            sweets.remove(0);
+    public void optimizePrice(double maxWeight) {
+        // Сортируем список сладостей по цене (возрастание)
+            sweets.sort(Comparator.comparingDouble(BoxOfSweets::getPrice));
+        // Удаляем самые дешевые сладости, пока общий вес больше maxWeight
+        while (getTotalWeight() > maxWeight) {
+            if (!sweets.isEmpty()) {
+                sweets.remove(0); // Удаляем первый элемент (самый дешевый)
+            } else {
+                break;
+            }
         }
+
+
     }
 }

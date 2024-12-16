@@ -40,13 +40,14 @@ public class Main {
             sweetBox.optimizeWeight(maxWeight);
             sweetBox.showAllSweets();
             System.out.println("Общий вес после оптимизации: " + sweetBox.getTotalWeight() + " g");
+            System.out.println("Общая стоимость после оптимизации: " + sweetBox.getTotalPrice() + " руб");
         } else if (choice == 2) {
             // Оптимизация по цене
             System.out.println("Введите максимальную цену для оптимизации:");
-            double maxPrice = scanner.nextDouble();
+            double  maxWeightForPrice = scanner.nextDouble();
 
-            System.out.println("\nОптимизация стоимости до макс " + maxPrice + " rub:");
-            sweetBox.optimizePrice(maxPrice);
+            System.out.println("\nОптимизация стоимости до макс " +  maxWeightForPrice + " rub:");
+            sweetBox.optimizeWeight( maxWeightForPrice);
             sweetBox.showAllSweets();
             System.out.println("Общая стоимость после оптимизации: " + sweetBox.getTotalPrice() + " rub");
         } else {
