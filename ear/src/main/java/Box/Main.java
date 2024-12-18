@@ -42,16 +42,15 @@ public class Main {
             System.out.println("Общий вес после оптимизации: " + sweetBox.getTotalWeight() + " g");
             System.out.println("Общая стоимость после оптимизации: " + sweetBox.getTotalPrice() + " руб");
         } else if (choice == 2) {
-            // Оптимизация по цене
-            System.out.println("Введите максимальную цену для оптимизации:");
-            double  maxWeightForPrice = scanner.nextDouble();
+            // Оптимизация по весу через удаление дешевых товаров
+            System.out.println("Введите максимальный вес для оптимизации:");
+            double maxWeight = scanner.nextDouble();
 
-            System.out.println("\nОптимизация стоимости до макс " +  maxWeightForPrice + " rub:");
-            sweetBox.optimizeWeight( maxWeightForPrice);
+            System.out.println("\nОптимизация стоимости до макс веса " + maxWeight + " кг:");
+            sweetBox.optimizePrice(maxWeight); 
             sweetBox.showAllSweets();
+            System.out.println("Общий вес после оптимизации: " + sweetBox.getTotalWeight() + " кг");
             System.out.println("Общая стоимость после оптимизации: " + sweetBox.getTotalPrice() + " rub");
-        } else {
-            System.out.println("Неверный выбор. Попробуйте снова.");
         }
 
 

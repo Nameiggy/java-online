@@ -22,6 +22,11 @@ abstract class BoxOfSweets {
     }
     abstract String getDescription();
 
+    @Override
+    public String toString() {
+        return "Сладость [Название: " + name + ", Вес: " + weight + " кг, Цена: " + price + " руб.]";
+    }
+
 
 
 }
